@@ -56,13 +56,66 @@ console.log(Marc);
 /*=====================*/
 
 const myInfo = {
+
     name: "Marc",
     age: 30,
     isAdmin: true,
     greetRegular: function (){
-        return `${this.name}  ${this.age} `
+        return `my name is ${this.name} and my age is ${this.age}`
     },
 }
 
-let [namev2, age] = myInfo.greetRegular()
-console.log(`my name is ${namev2} and my age is ${age}`);
+let res = myInfo.greetRegular()
+console.log(res)
+
+/*=====================*/
+
+class human{
+    public name: string;
+    private age: number;
+
+    constructor(name: string, age: number){
+        this.name = name;
+        this.age = age
+    }
+
+    humanInfo(){
+        return `${this.name} is ${this.age} years old`
+    }
+}
+
+class person1 extends human{
+    public gender: string;
+
+    constructor(name: string, age: number, gender: string){
+        super(name, age)
+        this.gender = gender;
+    }
+}
+
+let res1 = new person1('Marc', 30, 'male')
+console.log(res1);
+
+
+/*=====================*/
+
+interface Person {
+    name: string;
+    age: number;
+    gender: string;
+    sayHello(): void;
+  }
+
+  function greet(person:Person){
+    console.log(`Hello, ${person.name}! You are ${person.age} years old.`);
+    person.sayHello();
+  }
+
+  const marc: Person = {
+    name: 'Marc',
+    age: 10,
+    gender: 'male',
+    sayHello() {
+      console.log('Hello!');
+    },
+  }
